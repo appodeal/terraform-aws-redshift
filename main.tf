@@ -11,7 +11,7 @@ resource "aws_redshift_cluster" "this" {
   cluster_version    = "${var.cluster_version}"
   node_type          = "${var.cluster_node_type}"
   number_of_nodes    = "${var.cluster_number_of_nodes}"
-  cluster_type       = "${var.cluster_number_of_nodes > 1 ? "multi-node" : "single-node" }"
+  cluster_type       = "${var.cluster_number_of_nodes > 1 ? "multi-node" : "single-node"}"
   database_name      = "${var.cluster_database_name}"
   master_username    = "${var.cluster_master_username}"
   master_password    = "${var.cluster_master_password}"
@@ -28,9 +28,10 @@ resource "aws_redshift_cluster" "this" {
   # Snapshots and backups
   final_snapshot_identifier           = "${var.final_snapshot_identifier}"
   skip_final_snapshot                 = "${var.skip_final_snapshot}"
-  automated_snapshot_retention_period = "${var.automated_snapshot_retention_period }"
+  automated_snapshot_retention_period = "${var.automated_snapshot_retention_period}"
   preferred_maintenance_window        = "${var.preferred_maintenance_window}"
   allow_version_upgrade               = "${var.allow_version_upgrade}"
+  snapshot_identifier                 = "${var.snapshot_identifier}"
 
   # IAM Roles
   iam_roles = ["${var.cluster_iam_roles}"]
@@ -87,7 +88,7 @@ resource "aws_redshift_parameter_group" "this" {
 
 resource "aws_redshift_subnet_group" "this" {
   # if we passed a value for redshift_subnet_group_name, don't bother creating a subnet group
-  count = "${length(var.redshift_subnet_group_name) > 0 ? 0 : 1 }"
+  count = "${length(var.redshift_subnet_group_name) > 0 ? 0 : 1}"
 
   name        = "${var.cluster_identifier}"
   description = "Redshift subnet group of ${var.cluster_identifier}"

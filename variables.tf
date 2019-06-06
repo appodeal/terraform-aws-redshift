@@ -78,6 +78,11 @@ variable "final_snapshot_identifier" {
   default     = false
 }
 
+variable "snapshot_identifier" {
+  description = " (Optional) The name of the snapshot from which to create the new cluster."
+  default     = ""
+}
+
 variable "skip_final_snapshot" {
   description = "If true (default), no snapshot will be made before deleting DB"
   default     = true
