@@ -32,6 +32,7 @@ resource "aws_redshift_cluster" "this" {
   preferred_maintenance_window        = "${var.preferred_maintenance_window}"
   allow_version_upgrade               = "${var.allow_version_upgrade}"
   snapshot_identifier                 = "${var.snapshot_identifier}"
+  elastic_ip                          = "${var.elastic_ip}"
 
   # IAM Roles
   iam_roles = ["${var.cluster_iam_roles}"]

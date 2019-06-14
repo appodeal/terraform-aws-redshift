@@ -159,3 +159,8 @@ variable "allow_version_upgrade" {
   description = "(Optional) If true, major version upgrades can be applied during the maintenance window to the Amazon Redshift engine that is running on the cluster."
   default     = true
 }
+
+variable "elastic_ip" {
+  description = " (Optional) The Elastic IP (EIP) address for the cluster."
+  default     = ""
+}
